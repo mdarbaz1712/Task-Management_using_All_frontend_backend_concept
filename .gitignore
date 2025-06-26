@@ -1,0 +1,29 @@
+# Project dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+*.env
+
+# Build files
+dist/
+build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Misc
+*.swp
+*.swo
