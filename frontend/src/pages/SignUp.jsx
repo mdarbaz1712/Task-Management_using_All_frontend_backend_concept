@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from "axios"
 import { useSelector } from 'react-redux'
-import { backend_url } from '../../store/store';
+import { backend_url } from '../store/store';
 
 const SignUp = () => {
     const isLoggedIn=useSelector((state)=>state.auth.isLoggedIn)
