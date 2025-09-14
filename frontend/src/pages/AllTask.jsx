@@ -3,6 +3,7 @@ import Cards from '../components/Home/Cards';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import InputTask from '../components/Home/InputTask';
 import axios from "axios"
+import { backend_url } from '../../store/store';
 
 const AllTask = () => {
   const [visInputTask, setVisInputTask] = useState(false); 

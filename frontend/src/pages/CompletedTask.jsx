@@ -1,6 +1,7 @@
 import React ,{useState,useEffect}from 'react'
 import Cards from '../components/Home/Cards'
 import axios from "axios"
+import { backend_url } from '../../store/store';
 
 const CompletedTask = () => {
   const headers={
