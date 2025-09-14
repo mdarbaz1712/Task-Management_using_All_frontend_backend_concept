@@ -14,7 +14,6 @@ const sendMail = require("./utils/mailer");
 // ---------------- CORS ---------------- //
 const corsOptions = {
   origin: [
-    "http://localhost:5173", // dev frontend
     "https://task-management-app-frontend-l4pp.onrender.com" // deployed frontend
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
