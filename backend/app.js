@@ -15,6 +15,7 @@ const sendMail = require("./utils/mailer");
 const corsOptions = {
   origin: [
     "https://task-management-app-frontend-l4pp.onrender.com" // deployed frontend
+    
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
