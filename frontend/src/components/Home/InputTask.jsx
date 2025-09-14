@@ -40,7 +40,6 @@ const InputTask = ({ visInputTask, setVisInputTask, updatedTask, setUpdatedTask 
       }
 
       const response = await axios.post(`${backend_url}/api/v2/create-task`, data, { headers });
-      console.log(response);
       setData({ title: "", desc: "", dueDate: "" });
       setSeconds(0);
       setUpdatedTask({ id: "", title: "", desc: "" });

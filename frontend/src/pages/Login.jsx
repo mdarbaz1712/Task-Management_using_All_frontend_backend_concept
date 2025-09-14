@@ -24,7 +24,6 @@ const Login = () => {
                 alert("Fill All The Fields !!!")
             }
             else{
-                console.log("login page")
                 const response=await axios.post(`${backend_url}/api/v1/log-in`,data)
                 setData({username:"",password:""})
                 localStorage.setItem("id",response.data.id)

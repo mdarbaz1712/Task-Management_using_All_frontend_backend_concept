@@ -14,7 +14,6 @@ route.post("/create-task",authenticateToken,async(req,res)=>{
         res.status(200).json({message:"Task Created Successfully"})
     }
     catch(err){
-        console.log(err);
         res.status(400).json({message:"Internal Server Error"})
     }
 })
@@ -25,7 +24,6 @@ route.get("/all-task",authenticateToken,async(req,res)=>{
         const userInfo=await User.findById(id).populate({path:"tasks",options:{sort:{createdAt:-1}}});
         res.status(200).json({message:userInfo});
     } catch (error) {
-        console.log(error);
         res.status(400).json({message:"Internal Server Error"})
     }
 })
@@ -38,7 +36,6 @@ route.delete("/delete-task/:id",authenticateToken,async(req,res)=>{
         await User.findByIdAndUpdate(userId,{$pull:{tasks:taskId}})
         res.status(200).json({message:"Task Deleted Successfully"});
     } catch (error) {
-        console.log(error);
         res.status(400).json({message:"Internal Server Error"})
     }
 
@@ -51,7 +48,6 @@ route.put("/update-task/:taskId",authenticateToken,async(req,res)=>{
         await Task.findByIdAndUpdate(taskId,{title:title,desc:desc})
         res.status(200).json({message:"Task Updated Successfully !!"})
     } catch (error) {
-        console.log(error);
         res.status(400).json({message:"Internal Server Error"})
     }
 })
@@ -64,7 +60,6 @@ route.put("/update-imp-task/:taskId",authenticateToken,async(req,res)=>{
         const task1=await Task.findByIdAndUpdate(taskId,{important:!impTask})
         res.status(200).json({message:task1});
     } catch (error) {
-        console.log(error);
         res.status(400).json({message:"Internal Server Error"})
     }
 })
@@ -77,7 +72,6 @@ route.put("/update-comp-task/:taskId",authenticateToken,async(req,res)=>{
         const task1=await Task.findByIdAndUpdate(taskId,{complete:!compTask})
         res.status(200).json({message:task1});
     } catch (error) {
-        console.log(error);
         res.status(400).json({message:"Internal Server Error"})
     }
 })
@@ -92,7 +86,6 @@ route.get("/all-imp-task",authenticateToken,async(req,res)=>{
         })        
         res.status(200).json({tasks:impTask});
     } catch (error) {
-        console.log(error);
         res.status(400).json({message:"Internal Server Error"})
     }
 })
