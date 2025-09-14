@@ -12,15 +12,16 @@ const User = require("./models/user");
 const sendMail = require("./utils/mailer");
 
 // ---------------- CORS ---------------- //
-const corsOptions = {
-  origin: [
-    "https://task-management-app-frontend-l4pp.onrender.com" // deployed frontend
+// const corsOptions = {
+//   origin: [
+//     "https://task-management-app-frontend-l4pp.onrender.com" // deployed frontend
     
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-};
-app.use(cors(corsOptions));
+//   ],
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true,
+// };
+// app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 // ---------------- Routes ---------------- //
