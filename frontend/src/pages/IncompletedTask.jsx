@@ -12,7 +12,7 @@ const IncompletedTask = () => {
   
       useEffect(() => {
         const fetch=async()=>{
-          const response=await axios.get("http://localhost:1000/api/v2/all-incomp-task",{headers})
+          const response=await axios.get(`${backend_url}/api/v2/all-incomp-task`,{headers})
           setData(response.data.tasks);
         }  
         fetch();  

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { RxCross1 } from 'react-icons/rx';
 import axios from "axios";
+import { backend_url } from '../../store/store';
 
 const InputTask = ({ visInputTask, setVisInputTask, updatedTask, setUpdatedTask }) => {
   const [data, setData] = useState({ title: "", desc: "", dueDate: "" });
@@ -10,21 +11,21 @@ const InputTask = ({ visInputTask, setVisInputTask, updatedTask, setUpdatedTask 
     if (updatedTask) {
       setData({ title: updatedTask.title || "", desc: updatedTask.desc || "", dueDate: updatedTask.dueDate || "" });
     }
-  }, [updatedTask]);
+  }, [updatedTask])
 
   const headers = {
     id: localStorage.getItem("id"),
     authorization: `Bearer ${localStorage.getItem("token")}`
-  };
+  }
 
   const change = (e) => {
     const { name, value } = e.target;
-    setData({ ...data, [name]: value });
-  };
+    setData({ ...data, [name]: value })
+  }
 
   const submit = async () => {
     if (data.title === "" || data.desc === "") {
-      alert("All Fields are required !!! ");
+      alert("All Fields are required  !!!");
     } else {
       // Check if dueDate is set and within 30 seconds
       if (data.dueDate) {
@@ -38,7 +39,7 @@ const InputTask = ({ visInputTask, setVisInputTask, updatedTask, setUpdatedTask 
         }
       }
 
-      const response = await axios.post("http://localhost:1000/api/v2/create-task", data, { headers });
+      const response = await axios.post(`${backend_url}/api/v2/create-task`, data, { headers });
       console.log(response);
       setData({ title: "", desc: "", dueDate: "" });
       setSeconds(0);
@@ -65,7 +66,7 @@ const InputTask = ({ visInputTask, setVisInputTask, updatedTask, setUpdatedTask 
           }
         }
 
-        const res = await axios.put(`http://localhost:1000/api/v2/update-task/${id}`, data, { headers });
+        const res = await axios.put(`${backend_url}/api/v2/update-task/${id}`, data, { headers });
         setData({ title: "", desc: "", dueDate: "" });
         setSeconds(0);
         setUpdatedTask({ id: "", title: "", desc: "" });

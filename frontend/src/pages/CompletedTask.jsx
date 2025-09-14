@@ -11,7 +11,7 @@ const CompletedTask = () => {
   
       useEffect(() => {
         const fetch=async()=>{
-          const response=await axios.get("http://localhost:1000/api/v2/all-comp-task",{headers})
+          const response=await axios.get(`${backend_url}/api/v2/all-comp-task`,{headers})
           setData(response.data.tasks);
         }  
         fetch();  

@@ -5,6 +5,7 @@ import { MdDelete } from "react-icons/md";
 import { AiFillPlusCircle } from "react-icons/ai";
 import InputTask from './InputTask';
 import axios from "axios"
+import { backend_url } from '../../store/store';
 
 const Cards = ({home,isAddTaskBtn,visInputTask,setVisInputTask,tasks,setUpdatedTask}) => {
     const headers={
@@ -13,7 +14,7 @@ const Cards = ({home,isAddTaskBtn,visInputTask,setVisInputTask,tasks,setUpdatedT
     }
     const updateCompTask=async(id)=>{
         try{
-            await axios.put(`http://localhost:1000/api/v2/update-comp-task/${id}`,{},{headers})
+            await axios.put(`${backend_url}/api/v2/update-comp-task/${id}`,{},{headers})
         }
         catch(error){
             console.log(error)
@@ -21,7 +22,7 @@ const Cards = ({home,isAddTaskBtn,visInputTask,setVisInputTask,tasks,setUpdatedT
     }
     const updateImpTask=async(id)=>{
         try{
-            await axios.put(`http://localhost:1000/api/v2/update-imp-task/${id}`,{},{headers});  
+            await axios.put(`${backend_url}/api/v2/update-imp-task/${id}`,{},{headers});  
         }
         catch(error){
             console.log(error);
@@ -29,7 +30,7 @@ const Cards = ({home,isAddTaskBtn,visInputTask,setVisInputTask,tasks,setUpdatedT
     }
     const deleteTask=async(id)=>{
         try{
-            await axios.delete(`http://localhost:1000/api/v2/delete-task/${id}`,{headers})
+            await axios.delete(`${backend_url}/api/v2/delete-task/${id}`,{headers})
         }
         catch(error){
             console.log(error);

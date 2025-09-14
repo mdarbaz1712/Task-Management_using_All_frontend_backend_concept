@@ -20,7 +20,7 @@ const SignUp = () => {
       alert("Fill All The Fields !!!");
     } else {
       // ✅ Await the response directly
-      const response = await axios.post("http://localhost:1000/api/v1/sign-in", data);
+      const response = await axios.post(`${backend_url}/api/v1/sign-in`, data);
 
       setData({ username: "", email: "", password: "" });
 
