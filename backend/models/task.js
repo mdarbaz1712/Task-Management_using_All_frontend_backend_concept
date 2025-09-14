@@ -3,11 +3,11 @@ const mongoose=require("mongoose")
 const taskSchema=mongoose.Schema({
     title:{
         type:String,
-        require:true,
+        required:true,
     },
     desc:{
         type:String,
-        require:true
+        required:true
     },
     important:{
         type:Boolean,
@@ -16,7 +16,16 @@ const taskSchema=mongoose.Schema({
     complete:{
         type:Boolean,
         default:false
-    }
+    },
+    dueDate:{
+        type:Date,
+    },
+    user:{
+        type:mongoose.Types.ObjectId,
+        ref:"user"
+    },
+    alertSent: { type: Boolean, default: false },
+
 },{timestamps:true});
 
 module.exports=mongoose.model("task",taskSchema)

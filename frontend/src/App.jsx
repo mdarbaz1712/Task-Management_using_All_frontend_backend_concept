@@ -26,7 +26,7 @@ const App = () => {
   )
   
   return (
-    <div className='bg-gray-600 h-screen w-screen relative'>
+    <div className='bg-gray-600 h-full w-full'>
         <Routes>
           <Route exact path='/' element={<Home/>}>
           <Route index path='/' element={<AllTask/>}></Route>

@@ -41,7 +41,7 @@ router.post("/log-in",async(req,res)=>{
         }
         const isPass=await bcrypt.compare(password,existingUser.password);
             if(!isPass){
-                res.status(400).json({message:"Invalid Credentials !!!"});
+                res.status(401).json({message:"Invalid Credentials !!!"});
             }
         const token=jwt.sign({id:existingUser._id,username:username},"tcmTM",{expiresIn:"2d"});
         res.status(200).json({id:existingUser._id,token:token})

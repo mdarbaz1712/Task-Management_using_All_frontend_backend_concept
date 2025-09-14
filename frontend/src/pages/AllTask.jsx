@@ -22,14 +22,15 @@ const AllTask = () => {
     })
     
   return (
-    <>
+    <div className='flex flex-col'>
       <div className="flex justify-end py-2">
         <AiFillPlusCircle
           className="cursor-pointer transition-all duration-200 hover:scale-110 text-5xl font-bold"
           onClick={() => setVisInputTask(true)}
         />
       </div>
-      {data&&<Cards isAddTaskBtn={true} visInputTask={visInputTask} setVisInputTask={setVisInputTask} tasks={data.tasks} setUpdatedTask={setUpdatedTask}/>}
+      <div>
+        {data&&<Cards isAddTaskBtn={true} visInputTask={visInputTask} setVisInputTask={setVisInputTask} tasks={data.tasks} setUpdatedTask={setUpdatedTask}/>}
 
       <InputTask
         visInputTask={visInputTask}
@@ -37,7 +38,8 @@ const AllTask = () => {
         updatedTask={updatedTask}
         setUpdatedTask={setUpdatedTask}
       />
-    </>
+      </div>
+    </div>
   );
 };
 

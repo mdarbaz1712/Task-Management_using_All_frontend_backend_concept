@@ -7,8 +7,8 @@ const Home = () => {
   return (
       <>
         {(          
-          <div className='gap-5 h-screen p-3 flex w-screen'>        
-          <div className='h-full w-1/6 border border-white rounded-lg p-3'>
+          <div className='gap-5 h-full p-3 flex w-full'>        
+          <div className='h-[100vh] w-1/6 border border-white rounded-lg p-3'>
             <Sidebar/>
           </div>
           <div className='h-full w-5/6 border border-white rounded-lg p-3'>

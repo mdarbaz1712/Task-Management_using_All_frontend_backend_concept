@@ -14,21 +14,28 @@ const SignUp = () => {
         const {name,value}=e.target
         setData({...data,[name]:value})
     }
-    const submit=async ()=>{
-        try {
-            if(data.username===""||data.email===""||data.password===""){
-                alert("Fill All The Fields !!!")
-            }
-            else{
-                const response=axios.post("http://localhost:1000/api/v1/sign-in",data)
-                setData({username:"",email:"",password:""})
-                alert((await response).data.message)
-                navigate("/login")
-            }
-        } catch(error) {
-            alert(error.response.data.message)
-        }
+    const submit = async () => {
+  try {
+    if (data.username === "" || data.email === "" || data.password === "") {
+      alert("Fill All The Fields !!!");
+    } else {
+      // ✅ Await the response directly
+      const response = await axios.post("http://localhost:1000/api/v1/sign-in", data);
+
+      setData({ username: "", email: "", password: "" });
+
+      // ✅ Make sure backend sends { message: "something" }
+      alert(response.data.message);
+
+      navigate("/login");
     }
+  } catch (error) {
+    // ✅ Protect against missing error.response
+    alert(error.response?.data?.message || "Something went wrong!");
+    console.error(error);
+  }
+};
+
   return (
     <div className='fixed h-full w-full top-0 left-0 flex justify-center items-center'>
         <div className='flex flex-col h-3/6 w-2/6 bg-black rounded-lg justify-between text-white p-10'>
