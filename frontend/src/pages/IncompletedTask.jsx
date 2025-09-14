@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from "axios"
 import Cards from '../components/Home/Cards'
-import { backend_url } from '../../store/store';
+import { backend_url } from '../store/store';
 
 
 const IncompletedTask = () => {
