@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from "axios"
 import { authActions } from '../store/auth'
-import { backend_url } from '../../store/store';
+import { backend_url } from '../store/store';
 import { useDispatch ,useSelector} from 'react-redux'
 
 const Login = () => {
