@@ -11,34 +11,35 @@ const Task = require("./models/task");
 const User = require("./models/user");
 const sendMail = require("./utils/mailer");
 
-// Middleware
-app.use(cors());
+// ---------------- CORS ---------------- //
+const corsOptions = {
+  origin: [
+    "http://localhost:5173", // dev frontend
+    "https://task-management-app-frontend-l4pp.onrender.com" // deployed frontend
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
-// Routes
+// ---------------- Routes ---------------- //
 app.use("/api/v1", userApi);
 app.use("/api/v2", taskApi);
-app.use("/", (req, res) => {
-  res.status(200).json({ message: "Hello from Backend" });
-});
+app.get("/", (req, res) => res.status(200).json({ message: "Hello from Backend" }));
 
-// Start Server
+// ---------------- Start Server ---------------- //
 const PORT = process.env.PORT || 1000;
-app.listen(PORT, () => {
-  console.log(`✅ Server is started on port ${PORT}!!`);
-});
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
 
-// ------------------ Cron Job ------------------ //
-// Run every 1 second (for testing only)
+// ---------------- Cron Job for overdue tasks ---------------- //
 cron.schedule("* * * * * *", async () => {
   try {
     const now = new Date();
-
-    // Find overdue tasks that are not complete AND email not sent
     const overdueTasks = await Task.find({
       dueDate: { $lt: now },
       complete: false,
-      alertSent: false, // ✅ only pick tasks where alert not sent
+      alertSent: false,
     }).populate("user");
 
     for (let task of overdueTasks) {
@@ -51,12 +52,11 @@ cron.schedule("* * * * * *", async () => {
         );
         console.log(`📧 Email sent to ${user.email}`);
 
-        // ✅ Mark alert as sent
         task.alertSent = true;
         await task.save();
       }
     }
   } catch (error) {
-    console.error("❌ Error in overdue job:", error);
+    console.error("❌ Cron job error:", error);
   }
 });
